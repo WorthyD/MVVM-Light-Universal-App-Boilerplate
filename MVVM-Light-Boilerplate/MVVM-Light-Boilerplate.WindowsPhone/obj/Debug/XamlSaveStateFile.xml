@@ -1,0 +1,9 @@
+<XamlCompilerSaveState>
+  <ReferenceAssemblyList>
+    <LocalAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\mvvm-light-boilerplate\mvvm-light-boilerplate.windowsphone\obj\debug\intermediatexaml\mvvm-light-boilerplate.windowsphone.exe" HashGuid="b21e1c15-04a8-22a6-d26b-c636a949890c" />
+    <ReferenceAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\packages\mvvmlightlibs.4.4.32.1\lib\wpa81\galasoft.mvvmlight.dll" HashGuid="77fb4b2e-8ec5-88d5-d8e7-768d248c7bbc" />
+    <ReferenceAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\packages\mvvmlightlibs.4.4.32.1\lib\wpa81\galasoft.mvvmlight.extras.dll" HashGuid="28bb2089-c7a4-73bb-7a72-1ea8b02698b0" />
+    <ReferenceAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\packages\mvvmlightlibs.4.4.32.1\lib\wpa81\galasoft.mvvmlight.platform.dll" HashGuid="c769c228-b45f-ca29-24b7-7495dae962ed" />
+    <ReferenceAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\packages\mvvmlightlibs.4.4.32.1\lib\wpa81\microsoft.practices.servicelocation.dll" HashGuid="89de7f80-26d8-a17c-5ad9-b855f81ea5b2" />
+  </ReferenceAssemblyList>
+</XamlCompilerSaveState>

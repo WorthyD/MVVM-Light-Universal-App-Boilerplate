@@ -1,0 +1,17 @@
+﻿<Application
+    x:Class="MVVM_Light_Boilerplate.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MVVM_Light_Boilerplate"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     mc:Ignorable="d"
+    xmlns:vm="using:MVVM_Light_Boilerplate.ViewModel"
+    >
+    <Application.Resources>
+        
+        <vm:ViewModelLocator x:Key="Locator"
+                             d:IsDataSource="True" />
+    </Application.Resources>
+</Application>
+
