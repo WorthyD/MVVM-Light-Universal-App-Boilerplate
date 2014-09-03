@@ -1,1 +1,0 @@
-C:\Dev\PersonalProjects\MVVM-Light-Boilerplate\MVVM-Light-Boilerplate\MVVM-Light-Boilerplate.WindowsPhone\MVVM-Light-Boilerplate.WindowsPhone.csproj;neutral
