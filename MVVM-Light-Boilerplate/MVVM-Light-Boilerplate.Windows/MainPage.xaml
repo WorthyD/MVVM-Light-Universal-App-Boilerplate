@@ -52,15 +52,17 @@
                 <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
-        
+
         <Hub>
-            <interactivity:Interaction.Behaviors>
+            <!--TODO: FInd out out hot get section header click to work-->
+            <!--<interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="Tapped">
                     <core:InvokeCommandAction 
                                 Command="{Binding DataContext.ShowPositionCommand, ElementName=LayoutRoot }"
                                 />
                 </core:EventTriggerBehavior>
-            </interactivity:Interaction.Behaviors>
+            </interactivity:Interaction.Behaviors>-->
+
             <Hub.Header>
                 <!-- Back button and page title -->
                 <Grid>

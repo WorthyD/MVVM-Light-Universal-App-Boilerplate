@@ -178,7 +178,6 @@ namespace MVVM_Light_Boilerplate.MVVM_Light_Boilerplate_WindowsPhone_XamlTypeInf
         }
 
         private object Activate_0_ViewModelLocator() { return new global::MVVM_Light_Boilerplate.ViewModel.ViewModelLocator(); }
-        private object Activate_2_MainViewModel() { return new global::MVVM_Light_Boilerplate.ViewModel.MainViewModel(); }
         private object Activate_4_ObservableObject() { return new global::GalaSoft.MvvmLight.ObservableObject(); }
         private object Activate_5_MainPage() { return new global::MVVM_Light_Boilerplate.MainPage(); }
 

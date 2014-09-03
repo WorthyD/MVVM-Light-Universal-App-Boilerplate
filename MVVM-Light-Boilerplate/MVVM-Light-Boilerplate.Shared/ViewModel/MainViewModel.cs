@@ -12,19 +12,7 @@ namespace MVVM_Light_Boilerplate.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _helloWorld;
 
-        public string HelloWorld
-        {
-            get
-            {
-                return _helloWorld;
-            }
-            set
-            {
-                Set(() => HelloWorld, ref _helloWorld, value);
-            }
-        }
 
         private SampleDataGroup _gData;
 
@@ -42,11 +30,9 @@ namespace MVVM_Light_Boilerplate.ViewModel
 
        
 
-        public  MainViewModel()
+        public  MainViewModel(Common.NavigationHelper navHelper)
         {
-            HelloWorld = IsInDesignMode
-                ? "Runs in design mode"
-                : "Runs in runtime mode";
+
             GetData();
         }
         public async void GetData()
@@ -80,7 +66,7 @@ namespace MVVM_Light_Boilerplate.ViewModel
                         ?? (_showPositionCommand = new RelayCommand(
                 ()=>
                             {
-                            Debug.WriteLine("click");
+                                Debug.WriteLine("ShowPositionCommand");
                             }));
             }
         }

@@ -8,10 +8,9 @@
     <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="Title" />
     <RootPropertyPathName Name="ImagePath" />
-    <RootPropertyPathName Name="DataContext" />
-    <RootPropertyPathName Name="ShowPositionCommand" />
     <RootPropertyPathName Name="GData" />
     <RootPropertyPathName Name="Items" />
+    <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="ItemClick" />
     <RootPropertyPathName Name="SelectedItem" />
   </Roots.PropertyPathNames>
@@ -98,18 +97,6 @@
       <RootProperty Name="Header" />
       <RootProperty Name="Sections" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
-      <RootMethod Name="GetBehaviors" />
-      <RootMethod Name="SetBehaviors" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
-      <RootProperty Name="EventName" />
-      <RootProperty Name="Actions" />
-    </RootType>
-    <RootType FullName="Microsoft.Xaml.Interactions.Core.InvokeCommandAction">
-      <RootProperty Name="Command" />
-      <RootProperty Name="CommandParameter" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
     </RootType>
@@ -135,6 +122,18 @@
       <RootProperty Name="SelectionMode" />
       <RootProperty Name="IsSwipeEnabled" />
       <RootProperty Name="IsItemClickEnabled" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
+      <RootMethod Name="GetBehaviors" />
+      <RootMethod Name="SetBehaviors" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
+      <RootProperty Name="EventName" />
+      <RootProperty Name="Actions" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.InvokeCommandAction">
+      <RootProperty Name="Command" />
+      <RootProperty Name="CommandParameter" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
       <RootProperty Name="ImageSource" />

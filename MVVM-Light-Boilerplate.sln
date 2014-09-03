@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM-Light-Boilerplate.Wind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM-Light-Boilerplate.WindowsPhone", "MVVM-Light-Boilerplate\MVVM-Light-Boilerplate.WindowsPhone\MVVM-Light-Boilerplate.WindowsPhone.csproj", "{C6B6B507-4246-4C1D-AEEA-F40A2CE945A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0DCFF96-8340-4F07-AC34-BC6DC119BF15}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		MVVM-Light-Boilerplate\MVVM-Light-Boilerplate.Shared\MVVM-Light-Boilerplate.Shared.projitems*{8fe29b33-d812-4b30-88d6-3ba10b127afe}*SharedItemsImports = 4

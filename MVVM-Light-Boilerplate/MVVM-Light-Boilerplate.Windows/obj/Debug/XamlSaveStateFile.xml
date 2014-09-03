@@ -1,6 +1,6 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\mvvm-light-boilerplate\mvvm-light-boilerplate.windows\obj\debug\intermediatexaml\mvvm-light-boilerplate.windows.exe" HashGuid="76dc384d-c22a-d880-98f7-acd5cd52619f" />
+    <LocalAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\mvvm-light-boilerplate\mvvm-light-boilerplate.windows\obj\debug\intermediatexaml\mvvm-light-boilerplate.windows.exe" HashGuid="76eed682-98ae-eccb-2f36-62564dd7fc64" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windows\v8.1\extensionsdks\behaviorsxamlsdkmanaged\12.0\references\commonconfiguration\neutral\microsoft.xaml.interactions.dll" HashGuid="95a94f94-3917-d473-4f7c-18c4bd437046" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windows\v8.1\extensionsdks\behaviorsxamlsdkmanaged\12.0\references\commonconfiguration\neutral\microsoft.xaml.interactivity.dll" HashGuid="d25f59e6-dd81-900a-0dfc-55b39f6898ef" />
     <ReferenceAssembly PathName="c:\dev\personalprojects\mvvm-light-boilerplate\packages\mvvmlightlibs.4.4.32.1\lib\netcore45\galasoft.mvvmlight.dll" HashGuid="0e89fba1-9317-cee7-b759-aaaceabef9d3" />
