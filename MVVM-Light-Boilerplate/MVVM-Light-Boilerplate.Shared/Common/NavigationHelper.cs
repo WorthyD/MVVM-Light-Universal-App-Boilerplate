@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using MVVM_Light_Boilerplate.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,125 +11,119 @@ namespace MVVM_Light_Boilerplate.Common
 {
     public class NavigationHelper
     {
-        // private Page Page { get; set; }
-        private Frame Frame { get; set; }
-
-        public NavigationHelper()
-        {
-            this.Frame = ((Frame)Window.Current.Content);
-
-            //this.Page = (Page)Window.Current.Content;
-            //this.Page.Loaded += (sender, e) =>
-            //{
-            //    Debug.WriteLine("testing");
-            //};
-        }
-
-
-        #region Navigation support
-
-        RelayCommand _goBackCommand;
-        RelayCommand _goForwardCommand;
-
-        /// <summary>
-        /// <see cref="RelayCommand"/> used to bind to the back Button's Command property
-        /// for navigating to the most recent item in back navigation history, if a Frame
-        /// manages its own navigation history.
-        /// 
-        /// The <see cref="RelayCommand"/> is set up to use the virtual method <see cref="GoBack"/>
-        /// as the Execute Action and <see cref="CanGoBack"/> for CanExecute.
-        /// </summary>
-        public RelayCommand GoBackCommand
+        private Frame frame;
+        public Frame Frame
         {
             get
             {
-                if (_goBackCommand == null)
-                {
-                    _goBackCommand = new RelayCommand(
-                        () => this.GoBack(),
-                        () => this.CanGoBack());
-                }
-                return _goBackCommand;
+                return frame;
             }
             set
             {
-                _goBackCommand = value;
+                frame = value;
+                frame.Navigated += OnFrameNavigated;
             }
         }
-        /// <summary>
-        /// <see cref="RelayCommand"/> used for navigating to the most recent item in 
-        /// the forward navigation history, if a Frame manages its own navigation history.
-        /// 
-        /// The <see cref="RelayCommand"/> is set up to use the virtual method <see cref="GoForward"/>
-        /// as the Execute Action and <see cref="CanGoForward"/> for CanExecute.
-        /// </summary>
-        public RelayCommand GoForwardCommand
+
+        public NavigationHelper()
         {
-            get
+
+        }
+
+        public void Navigate(Type type)
+        {
+            Frame.Navigate(type);
+        }
+
+        public void Navigate(Type type, object parameter)
+        {
+            Frame.Navigate(type, parameter);
+        }
+
+        //public void Navigate(string type, object parameter)
+        //{
+        //    switch (type)
+        //    {
+        //        case PageNames.PopularTravelView:
+        //            Navigate<IPopularTravelView>(parameter); break;
+        //        case PageNames.TravelDetailView:
+        //            Navigate<ITravelDetailView>(parameter); break;
+        //        case PageNames.ContinentDetailView:
+        //            Navigate<IContinentDetailView>(parameter); break;
+        //        case PageNames.InfiniteTravelView:
+        //            Navigate<IInfiniteTravelView>(parameter);break;
+        //    }
+        //}
+
+        //private void Navigate<T>(object parameter) where T : IView
+        //{
+        //    DisposePreviousView();
+        //    var viewType = InstanceFactory.Registrations.ContainsKey(typeof(T)) ? InstanceFactory.Registrations[typeof(T)] : typeof(T);
+        //    Frame.Navigate(viewType, parameter);
+        //}
+
+        public IView CurrentView
+        {
+            get { return frame.Content as IView; }
+        }
+
+        private void DisposePreviousView()
+        {
+            try
             {
-                if (_goForwardCommand == null)
+                if (this.CurrentView != null && ((Page)this.CurrentView).NavigationCacheMode ==
+                    Windows.UI.Xaml.Navigation.NavigationCacheMode.Disabled)
                 {
-                    _goForwardCommand = new RelayCommand(
-                        () => this.GoForward(),
-                        () => this.CanGoForward());
+                    var currentView = this.CurrentView;
+                    var currentViewDisposable = currentView as IDisposable;
+
+                    // if(currentView is BasePage
+                    if (currentViewDisposable != null)
+                    {
+                        currentViewDisposable.Dispose();
+                        currentViewDisposable = null;
+                    } //view model is disposed in the view implementation
+                    currentView = null;
+                    GC.Collect();
                 }
-                return _goForwardCommand;
+            }
+            catch { }
+        }
+
+        public void Navigate(string type)
+        {
+            Frame.Navigate(Type.GetType(type));
+        }
+
+        public void GoBack()
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
             }
         }
 
-        /// <summary>
-        /// Virtual method used by the <see cref="GoBackCommand"/> property
-        /// to determine if the <see cref="Frame"/> can go back.
-        /// </summary>
-        /// <returns>
-        /// true if the <see cref="Frame"/> has at least one entry 
-        /// in the back navigation history.
-        /// </returns>
-        public virtual bool CanGoBack()
+        private void OnFrameNavigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
-            return this.Frame != null && this.Frame.CanGoBack;
-        }
-        /// <summary>
-        /// Virtual method used by the <see cref="GoForwardCommand"/> property
-        /// to determine if the <see cref="Frame"/> can go forward.
-        /// </summary>
-        /// <returns>
-        /// true if the <see cref="Frame"/> has at least one entry 
-        /// in the forward navigation history.
-        /// </returns>
-        public virtual bool CanGoForward()
-        {
-            return this.Frame != null && this.Frame.CanGoForward;
+            var view = e.Content as IView;
+            if (view == null)
+                return;
+
+            var viewModel = view.ViewModel;
+            if (viewModel != null)
+            {
+                if (!(e.NavigationMode ==
+                    Windows.UI.Xaml.Navigation.NavigationMode.Back
+                    &&
+                    (((Page)e.Content).NavigationCacheMode ==
+                    Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled ||
+                    (((Page)e.Content).NavigationCacheMode ==
+                    Windows.UI.Xaml.Navigation.NavigationCacheMode.Required))))
+                {
+                    viewModel.Initialize(e.Parameter);
+                }
+            }
         }
 
-        /// <summary>
-        /// Virtual method used by the <see cref="GoBackCommand"/> property
-        /// to invoke the <see cref="Windows.UI.Xaml.Controls.Frame.GoBack"/> method.
-        /// </summary>
-        public virtual void GoBack()
-        {
-            if (this.Frame != null && this.Frame.CanGoBack) this.Frame.GoBack();
-        }
-        /// <summary>
-        /// Virtual method used by the <see cref="GoForwardCommand"/> property
-        /// to invoke the <see cref="Windows.UI.Xaml.Controls.Frame.GoForward"/> method.
-        /// </summary>
-        public virtual void GoForward()
-        {
-            if (this.Frame != null && this.Frame.CanGoForward) this.Frame.GoForward();
-        }
-
-        #endregion
-
-
-        public virtual void NavigateTo(Type sourcePageType)
-        {
-            ((Frame)Window.Current.Content).Navigate(sourcePageType);
-        }
-
-        public void NavigateTo(Type sourcePageType, object parameter)
-        {
-            ((Frame)Window.Current.Content).Navigate(sourcePageType, parameter);
-        }
     }
 }

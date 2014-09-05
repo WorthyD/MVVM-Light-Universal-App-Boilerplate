@@ -17,10 +17,20 @@ namespace MVVM_Light_Boilerplate.ViewModel
             }
         }
 
+        public ItemPageViewModel ItemPage
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ItemPageViewModel>();
+            }
+        }
+
+
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<ItemPageViewModel>();
             SimpleIoc.Default.Register<NavigationHelper>();
         }
     }

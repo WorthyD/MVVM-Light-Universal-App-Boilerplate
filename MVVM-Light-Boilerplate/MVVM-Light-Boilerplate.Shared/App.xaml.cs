@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.ServiceLocation;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -74,6 +75,8 @@ namespace MVVM_Light_Boilerplate
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+            Common.NavigationHelper nav = ServiceLocator.Current.GetInstance<Common.NavigationHelper>();
+            nav.Frame = rootFrame;
 
             if (rootFrame.Content == null)
             {
@@ -95,10 +98,12 @@ namespace MVVM_Light_Boilerplate
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
-                {
-                    throw new Exception("Failed to create initial page");
-                }
+                nav.Navigate(typeof(MainPage), e.Arguments);
+
+                //if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                //{
+                //    throw new Exception("Failed to create initial page");
+                //}
             }
 
             // Ensure the current window is active

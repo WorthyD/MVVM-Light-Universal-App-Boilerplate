@@ -16,18 +16,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace MVVM_Light_Boilerplate
+namespace MVVM_Light_Boilerplate.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page, IView
+    public sealed partial class ItemPage : Page, IView
     {
-        public MainPage()
+        public ItemPage()
         {
             this.InitializeComponent();
         }
-
         IViewModel IView.ViewModel
         {
             get { return this.DataContext as IViewModel;  }

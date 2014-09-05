@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using MVVM_Light_Boilerplate.Contracts;
 using MVVM_Light_Boilerplate.DataModel;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace MVVM_Light_Boilerplate.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, IViewModel
     {
 
 
@@ -28,16 +29,16 @@ namespace MVVM_Light_Boilerplate.ViewModel
             }
         }
 
-       
-
-        public  MainViewModel(Common.NavigationHelper navHelper)
+        public Common.NavigationHelper NavHelper
         {
-
-            GetData();
+            get;
+            set;
         }
-        public async void GetData()
+
+
+        public MainViewModel(Common.NavigationHelper navHelper)
         {
-            GData = await SampleDataSource.GetGroupAsync("Group-4");
+            this.NavHelper = navHelper;
         }
 
 
@@ -64,10 +65,10 @@ namespace MVVM_Light_Boilerplate.ViewModel
             {
                 return _showPositionCommand
                         ?? (_showPositionCommand = new RelayCommand(
-                ()=>
-                            {
-                                Debug.WriteLine("ShowPositionCommand");
-                            }));
+                () =>
+                {
+                    Debug.WriteLine("ShowPositionCommand");
+                }));
             }
         }
 
@@ -81,13 +82,21 @@ namespace MVVM_Light_Boilerplate.ViewModel
                             item =>
                             {
                                 var x = (SampleDataItem)item.ClickedItem;
-                            Debug.WriteLine("click -" + x.Title );
+                                Debug.WriteLine("click -" + x.Title);
 
+
+                                //NavHelper.Navigate(typeof(ItemPageViewModel), x.UniqueId);
+                                NavHelper.Navigate(typeof(Views.ItemPage), x.UniqueId);
                             }));
             }
- 
+
         }
 
 
+
+        public async void Initialize(object parameter)
+        {
+            GData = await SampleDataSource.GetGroupAsync("Group-4");
+        }
     }
 }
